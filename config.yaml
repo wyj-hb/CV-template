@@ -1,0 +1,48 @@
+meta:
+  root_dir: C:\Users\王喻杰\Desktop\template\pytorch-template
+  debug: False
+  device: cpu
+  log_iter: 10
+  img_size: 640
+  class : 10
+lrs:
+  mode: reduce  # reduce / poly
+  warmup_iters: 10
+  factor: 0.2
+  patience: 4
+loss:
+  name: nll_loss
+model:
+  name: MnistModel
+  resume:
+optimizer:
+  type: Adam
+  lr: 0.001
+  weight_decay: 0.0
+  amsgrad: False
+metric:
+  m1: accuracy
+  m2: top_k_acc
+data_loader:
+  name: Mnist
+  path: C:\Users\王喻杰\Desktop\template\pytorch-template\dataset
+  batch_size: 128
+  shuffle: true
+  validation_split: 0.2
+  num_workers: 2
+lr_scheduler:
+  type: StepLR
+  step_size: 50
+  gamma: 0.1
+trainer:
+  name: trainer
+  epochs: 10
+  test_eopch: 1
+  save_dir: saved/
+  save_period: 5
+  verbosity: 2
+  monitor: min val_loss
+  early_stop: 10
+  tensorboard:
+    path: runs/test
+    use: true
